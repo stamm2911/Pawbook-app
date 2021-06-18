@@ -1,12 +1,13 @@
 const sequelize = require('../config/connection');
-const { Example } = require('../models');
+const { Adoption, Lost_Animal } = require('../models');
 
-const exampleData = require('./exampleData.json');
+const adoptionData = require('./adaptionData.json');
+const lost_animalData = require('./lost_animalData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  await Example.bulkCreate(exampleData);
+  await Adoption.bulkCreate(adoptionData);
 
   process.exit(0);
 };
