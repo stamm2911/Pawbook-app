@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dependencies": "0.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
@@ -19,8 +21,11 @@
     "sequelize": "^6.3.5"
   },
   "devDependencies": {
+    "autoprefixer": "^10.2.6",
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
-    "prettier": "^2.1.2"
+    "postcss": "^8.3.5",
+    "prettier": "^2.1.2",
+    "tailwindcss": "^2.2.0"
   }
 }
