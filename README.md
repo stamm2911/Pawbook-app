@@ -1,4 +1,4 @@
-# Unit 15: Project 2
+# Project 2
 
 ## Overview
 
