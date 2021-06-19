@@ -20,11 +20,11 @@ Lost_Animal.init(
       allowNull: false,
     },
     last_seen: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    user: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     found: {
@@ -42,7 +42,7 @@ Lost_Animal.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'example',
+    modelName: 'lost_animal',
   }
 );
 

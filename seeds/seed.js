@@ -8,6 +8,7 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
   await Adoption.bulkCreate(adoptionData);
+  await Lost_Animal.bulkCreate(lost_animalData);
 
   process.exit(0);
 };

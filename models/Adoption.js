@@ -19,8 +19,8 @@ Adoption.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    user: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     adopted: {
@@ -38,7 +38,7 @@ Adoption.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: 'example',
+    modelName: 'adoption',
   }
 );
 
