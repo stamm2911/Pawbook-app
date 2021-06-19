@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const exampleRoutes = require('./exampleRoutes');
+const adoptionRoutes = require('./adoptionRoutes');
+const lost_animalRoutes = require('./lost_animalRoutes');
 
-router.use('/examples', exampleRoutes);
+router.use('/adoption', adoptionRoutes);
+router.use('/lost_animal',lost_animalRoutes);
 
 module.exports = router;
