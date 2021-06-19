@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Alejandro",
+    "email": "alejandro@email.com",
+    "phone": "555 555 5555",
+    "photo": "Example 1",
+    "location": "Roma",
+    "description": "Dog lover",
+    "password": "password"
+  },
+  {
+    "name": "Eduardo",
+    "email": "eduardo@email.com",
+    "phone": "555 555 5555",
+    "photo": "Example 2",
+    "location": "Example 2",
+    "description": "Cat lover",
+    "password": "password2"
+  },
+  {
+    "name": "Regina",
+    "email": "regina@email.com",
+    "phone": "555 555 5555",
+    "photo": "Example 3",
+    "location": "Example 3",
+    "description": "dog and cat lover",
+    "password": "password3∫"
+  }
+]

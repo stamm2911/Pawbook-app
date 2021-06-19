@@ -1,12 +1,19 @@
 const sequelize = require('../config/connection');
-const { Example } = require('../models');
+const { Food, Users } = require('../models');
 
-const exampleData = require('./exampleData.json');
+const foodSeedData = require('./foodSeedData.json');
+const usersSeedData = require('./usersSeedData.json');
 
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+  try {
+    await sequelize.sync({ force: true });
+    console.log("err")
+    await Users.bulkCreate(usersSeedData);
+    await Food.bulkCreate(foodSeedData);
+  }
+  catch (err) { console.log(err) }
 
-  await Example.bulkCreate(exampleData);
+
 
   process.exit(0);
 };
