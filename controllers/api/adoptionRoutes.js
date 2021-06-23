@@ -6,22 +6,17 @@ router.get('/', async (req, res) => {
   try {
     const dbAdoptionData = await Adoption.findAll({
       order: [['updatedAt', 'DESC']],
+      attributes: {
+        exclude: ['id', 'user_id', 'createdAt']
+      },  
       include: [
         {
           model: Users,
-          // attributes: ['name'],
+          attributes: ['name'],
         },
       ],
     });
     res.status(200).json(dbAdoptionData);
-
-    // const galleries = dbGal  leryData.map((gallery) =>
-    //   gallery.get({ plain: true })
-    // );
-
-    // res.render('homepage', {
-    //   galleries,
-    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

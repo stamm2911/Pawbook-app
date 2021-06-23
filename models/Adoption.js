@@ -38,6 +38,7 @@ Adoption.init(
   },
   {
     sequelize,
+    initialAutoIncrement: 1000,
     timestamps: true,
     freezeTableName: true,
     underscored: true,

@@ -42,6 +42,7 @@ Lost_Animal.init(
   },
   {
     sequelize,
+    initialAutoIncrement: 2000,
     timestamps: false,
     freezeTableName: true,
     underscored: true,

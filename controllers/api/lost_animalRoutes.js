@@ -6,22 +6,17 @@ router.get('/', async (req, res) => {
   try {
     const dbLost_AnimalData = await Lost_Animal.findAll({
       order: [['date', 'DESC']],
+      attributes: {
+        exclude: ['id', 'user_id']
+      }, 
       include: [
         {
           model: Users,
-          // attributes: ['name'],
+          attributes: ['name'],
         },
       ],
     });
     res.status(200).json(dbLost_AnimalData);
-
-    // const galleries = dbGal  leryData.map((gallery) =>
-    //   gallery.get({ plain: true })
-    // );
-
-    // res.render('homepage', {
-    //   galleries,
-    // });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
