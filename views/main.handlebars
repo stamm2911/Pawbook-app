@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pawbook</title>
+    <meta name="description" content="">
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <style>
+        .body-bg {
+            background-color: #2145e8;
+            background-image: linear-gradient(315deg, #2145e8 0%, #5f72be 74%);
+        }
+    </style>
+</head>
+
+
+<body class="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0" >
+  <header>
+    <nav id="header" class="bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900 shadow-lg fixed top-0 z-40 w-full text-white">
+      <nav class="flex items-center justify-between flex-wrap bg-teal-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <a href="/home"><i class="text-4xl fas fa-paw mr-2"></i></a>
+          <span class="font-semibold text-4xl tracking-tight mr-2">Pawbook</span>
+        </div>
+        <div class="block lg:hidden">
+          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
+        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+          <div class="text-sm lg:flex-grow">
+            <a href="/adoption" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Adoption
+            </a>
+            <a href="/animals" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Lost Animals
+            </a>
+            <a href="/food" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+              Food
+            </a>
+          </div>
+          <div>
+            <a href="/profile{{id}}" id="nav-img" class="inline-block px-4 py-2 leading-none border rounded-full w-12 h-12 border-white mt-2"></a>
+          </div>
+        </div>
+      </nav>
+    </nav>
+  </header>
+
+  <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+    {{{ body }}}
+  </main>
+  
+</body>
+
+</html>
