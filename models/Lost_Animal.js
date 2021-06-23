@@ -25,7 +25,10 @@ Lost_Animal.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id',
+      },
     },
     found: {
       type: DataTypes.BOOLEAN,
@@ -35,10 +38,11 @@ Lost_Animal.init(
     photo: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
   },
   {
     sequelize,
+    initialAutoIncrement: 2000,
     timestamps: false,
     freezeTableName: true,
     underscored: true,

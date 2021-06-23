@@ -21,7 +21,10 @@ Adoption.init(
     },
     user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      references:{
+        model: 'users',
+        key: 'id',
+      }
     },
     adopted: {
       type: DataTypes.BOOLEAN,
@@ -35,6 +38,7 @@ Adoption.init(
   },
   {
     sequelize,
+    initialAutoIncrement: 1000,
     timestamps: true,
     freezeTableName: true,
     underscored: true,

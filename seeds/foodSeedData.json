@@ -6,7 +6,7 @@
     "type": "Dog",
     "location": "Chapultepec",
     "taken": true,
-    "uder_id": "1"
+    "user_id": "1"
   },
   {
     "brand": "Cat Show",
@@ -15,7 +15,7 @@
     "type": "Cat",
     "location": "Zócalo",
     "taken": false,
-    "uder_id": "2"
+    "user_id": "2"
   },
   {
     "brand": "Pedigree",
@@ -24,6 +24,6 @@
     "type": "Dog",
     "location": "Tepito",
     "taken": true,
-    "uder_id": "3"
+    "user_id": "3"
   }
 ]
