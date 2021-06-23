@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const { Lost_Animal } = require('../../models');
+const { Lost_Animal, Users } = require('../../models');
 
 // GET all lost animals
 router.get('/', async (req, res) => {
   try {
     const dbLost_AnimalData = await Lost_Animal.findAll({
       order: [['date', 'DESC']],
-      // include: [
-      //   {
-      //     model: Painting,
-      //     attributes: ['filename', 'description'],
-      //   },
-      // ],
+      include: [
+        {
+          model: Users,
+          // attributes: ['name'],
+        },
+      ],
     });
     res.status(200).json(dbLost_AnimalData);
 

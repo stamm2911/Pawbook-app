@@ -1,17 +1,17 @@
 const router = require('express').Router();
-const { Adoption } = require('../../models');
+const { Adoption, Users } = require('../../models');
 
-// GET all galleries for homepage
+// GET all adoptions
 router.get('/', async (req, res) => {
   try {
     const dbAdoptionData = await Adoption.findAll({
       order: [['updatedAt', 'DESC']],
-      // include: [
-      //   {
-      //     model: Painting,
-      //     attributes: ['filename', 'description'],
-      //   },
-      // ],
+      include: [
+        {
+          model: Users,
+          // attributes: ['name'],
+        },
+      ],
     });
     res.status(200).json(dbAdoptionData);
 
