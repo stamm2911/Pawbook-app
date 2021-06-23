@@ -7,6 +7,9 @@ router.get('/', async (req, res) => {
     // adoptions array
     const dbAdoptionData = await Adoption.findAll({
       order: [['updatedAt', 'DESC']],
+      where: {
+        adopted: false,
+      },
       attributes: [
         'id',
         'location',
@@ -32,6 +35,9 @@ router.get('/', async (req, res) => {
     //lost_animals array
     const dbLost_AnimalData = await Lost_Animal.findAll({
       order: [['date', 'DESC']],
+      where: {
+        found: false,
+      },
       attributes: {
         exclude: ['user_id'],
       },

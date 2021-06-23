@@ -6,8 +6,11 @@ router.get('/', async (req, res) => {
   try {
     const dbLost_AnimalData = await Lost_Animal.findAll({
       order: [['date', 'DESC']],
+      where: {
+        found: false,
+      },
       attributes: {
-        exclude: ['id', 'user_id']
+        exclude: ['user_id']
       }, 
       include: [
         {
@@ -29,6 +32,25 @@ router.post('/', async (req, res) => {
     const newLost_Animal = await Lost_Animal.create(req.body);
     res.status(200).json(newLost_Animal);
   } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// UPDATE a lost animal
+router.put('/:id', async (req, res) => {
+  try{
+    const dbLost_AnimalData = await Lost_Animal.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if(!dbLost_AnimalData[0]){
+        res.status(400).json({message: 'No lost_animal with this id!'});
+        return;
+    };
+    res.status(200).json(dbLost_AnimalData);
+  } catch (err){  
+    console.log(err);
     res.status(400).json(err);
   }
 });
