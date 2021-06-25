@@ -1,0 +1,67 @@
+<main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+    <section>
+        <h3 class="font-bold text-2xl">Welcome to Pawbook</h3>
+        <p class="text-gray-600 pt-2">Create an account.</p>
+    </section>
+
+    <section class="mt-10">
+        <form class="flex flex-col" method="POST" action="#">
+            <div class="mb-6 pt-3 rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="name">Full name</label>
+                <input type="text" id="name"
+                    class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-900 transition duration-500 px-3 pb-3">
+            </div>
+            <div class="mb-6 pt-3 rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Email</label>
+                <input type="text" id="email"
+                    class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-900 transition duration-500 px-3 pb-3">
+            </div>
+            <div class="mb-6 pt-3 rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Password</label>
+                <input type="password" id="password"
+                    class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-900 transition duration-500 px-3 pb-3">
+            </div>
+            <div class="mb-6 pt-3 rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Confirm password</label>
+                <input type="password" id="confirm-password"
+                    class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-900 transition duration-500 px-3 pb-3">
+            </div>
+
+            <div class="mb-6 pt-3 rounded bg-gray-200">
+                <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="number">Phone Number</label>
+                <input type="text" id="phone"
+                    class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-900 transition duration-500 px-3 pb-3">
+            </div>
+
+            <button
+                class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+                type="submit" id="submit">Sign Up</button>
+        </form>
+    </section>
+</main>
+
+
+<script type="text/javascript">
+    const submitButton = document.querySelector(".submit");
+    submitButton.addEventListener('click', (e) => {
+        let newUser = {
+            userName: document.getElementById('name').value.trim(),
+            userEmail: document.getElementById('email').value.trim(),
+            userPassword: document.getElementById('password').value.trim(),
+            userConfirmPassword: document.getElementById('confirm-password').value.trim()
+        };
+
+        fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        })
+            .then((response) => response.json())
+
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
+</script>

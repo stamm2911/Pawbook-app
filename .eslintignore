@@ -1,1 +1,4 @@
 node_modules
+DB_NAME=pawbook_db
+DB_USER=root
+DB_PASSWORD=Delalama1994
