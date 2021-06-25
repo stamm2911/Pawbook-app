@@ -27,26 +27,26 @@
   </section>
 
   <script type="text/javascript">
-    const submitButton = document.querySelector(".submit");
+   const submitButton = document.querySelector(".submit");
     submitButton.addEventListener('click', (e) => {
         let newFood = {
-            foodBrand: document.getElementById('brand').value.trim(),
-            foodQuantity: document.getElementById('quantity').value.trim(),
-            foodDate: document.getElementById('date').value.trim(),
-            foodFor: document.getElementById('food-for').value.trim()
-            foodLocation: document.getElementById('location').value.trim()
+            brand: document.getElementById('brand').value.trim(),
+            qty: document.getElementById('quantity').value.trim(),
+            date: document.getElementById('date').value.trim(),
+            type: document.getElementById('type').value.trim()
+            location: document.getElementById('location').value.trim()
         };
- 
-        fetch('/api/newFood', {
+        fetch('/api/food', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newFood),
         })
-            .then((response) => response.json())
- 
+            .then((newFood) => newFood.json())
+            console.log(newFood)
         .catch((error) => {
         console.error('Error:', error);
       });
     })
+    </script>
