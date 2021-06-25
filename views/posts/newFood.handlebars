@@ -1,23 +1,23 @@
   <section class="mt-10">
     <form class="flex flex-col" method="POST" action="#">
       <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="name">Brand</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="brand">Brand</label>
             <input type="text" id="brand" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Quantity</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="quantity">Quantity</label>
             <input type="text" id="quantity" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Date</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="date">Date</label>
             <input type="text" id="date" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
          <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Food for</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="type">Type Of Food</label>
             <input type="text" id="type" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
          <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Location</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="location">Location</label>
             <input type="text" id="location" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
        
@@ -30,21 +30,22 @@
     const submitButton = document.querySelector(".submit");
     submitButton.addEventListener('click', (e) => {
         let newFood = {
-            foodBrand: document.getElementById('brand').value.trim(),
-            foodQuantity: document.getElementById('quantity').value.trim(),
-            foodDate: document.getElementById('date').value.trim(),
-            foodFor: document.getElementById('food-for').value.trim()
-            foodLocation: document.getElementById('location').value.trim()
+            brand: document.getElementById('brand').value.trim(),
+            qty: document.getElementById('quantity').value.trim(),
+            date: document.getElementById('date').value.trim(),
+            type: document.getElementById('type').value.trim()
+            location: document.getElementById('location').value.trim()
         };
  
-        fetch('/api/newFood', {
+        fetch('/api/food', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newFood),
         })
-            .then((response) => response.json())
+            .then((newFood) => newFood.json())
+            console.log(newFood)
  
         .catch((error) => {
         console.error('Error:', error);
