@@ -107,13 +107,21 @@
 
 <script type='text/javascript'>
   const submitButton = document.querySelector(".submit");
-  submitButton.addEventListener('click', (e) => { let newAdoption = {
-  adoptionDate: document.getElementById('date').value.trim(), adoptionLocation:
-  document.getElementById('location').value.trim(), adoptionDescription:
-  document.getElementById('description').value.trim(), adoptionImage:
-  document.getElementById('image').value.trim() }; fetch('/api/newAdoption', {
-  method: 'POST', headers: { 'Content-Type': 'application/json', }, body:
-  JSON.stringify(newAdoption), }) .then((response) => response.json())
-  .catch((error) => { console.error('Error:', error); }); })
-
+    submitButton.addEventListener('click', (e) => {
+        let newAdoption = {
+            location: document.getElementById('location').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            image: document.getElementById('image').value.trim()
+        };
+        fetch('/api/adoption', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newAdoption),
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
 </script>
