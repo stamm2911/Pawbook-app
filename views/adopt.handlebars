@@ -1,18 +1,19 @@
+{{#each AdoptionData as |adoption| }}
   <section class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl  rounded-lg shadow-sm m-7 hover:-translate-y-1 hover:scale-105 hover:shadow-2xl">
       <img class="justify-start rounded-lg h-12 w-12 inline-block" src="{{profile.profile_picture}}" alt="">  
-      <a class="inline-block ml-2 font-bold text-xl" href="">{{profile.profile_name}}</a>
+      <a class="inline-block ml-2 font-bold text-xl" href="">{{adoption.user.name}}</a>
       <div class="flex justify-center">
-        <img class="m-4 h-80 w-80" src="{{adoption.animal_img}}" alt="">
+        <img class="m-4 h-80 w-80" src="{{adoption.photo}}" alt="">
       </div>
       
       <h3 class="font-bold text-black-600 text-lg text-center">Location: </h3>
-      <p class="text-black-600 pt-2 text-center mb-8">{{adoption.animal_location}}</p>
+      <p class="text-black-600 pt-2 text-center mb-8">{{adoption.location}}</p>
       <h4 class="font-bold  text-black-600 text-lg pt-2 text-center">Date: </h4>
-      <p class="text-black-600 pt-2 text-center mb-8">{{adoption.animal_date}}</p>
+      <p class="text-black-600 pt-2 text-center mb-8">{{adoption.updatedAt}}</p>
       <p class="font-bold  text-black-600 pt-2 text-lg text-center ">Description:</p>
-      <p class="text-black-600 pt-2 text-center mb-8">{{{adoption.animal_description}}</p>
+      <p class="text-black-600 pt-2 text-center mb-8">{{adoption.description}}</p>
       <button class="float-right text-5xl -mt-8"><i class="fas fa-paw"></i></button>
 
     </section>
-
+{{/each}}
     <script type="text/javascript">

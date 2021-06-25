@@ -2,27 +2,27 @@ const router = require('express').Router();
 const { Food, Users } = require('../../models');
 //Get all Food
 router.get('/', async (req, res) => {
-    try {
-        const dbFoodData = await Food.findAll({
-            order: [['date', 'DESC']],
-            where: {
-                taken: false,
-            },
-            attributes: {
-                exclude: ['user_id'],
-            },
-            include: [
-                {
-                    model: Users,
-                    attributes: ['name'],
-                },
-            ],
-        });
-        res.status(200).json(dbFoodData);
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+    // try {
+    //     const dbFoodData = await Food.findAll({
+    //         order: [['date', 'DESC']],
+    //         where: {
+    //             taken: false,
+    //         },
+    //         attributes: {
+    //             exclude: ['user_id'],
+    //         },
+    //         include: [
+    //             {
+    //                 model: Users,
+    //                 attributes: ['name'],
+    //             },
+    //         ],
+    //     });
+    //     res.status(200).json(dbFoodData);
+    // } catch (err) {
+    //     console.log(err);
+    //     res.status(500).json(err);
+    // }
 });
 //Post type of Food donation
 router.post('/', async (req, res) => {
