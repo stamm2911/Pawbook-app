@@ -20,3 +20,28 @@
         <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
     </form>
   </section>
+
+<script type="text/javascript">
+    const submitButton = document.querySelector(".submit");
+    submitButton.addEventListener('click', (e) => {
+        let newAdoption = {
+            adoptionDate: document.getElementById('date').value.trim(),
+            adoptionLocation: document.getElementById('location').value.trim(),
+            adoptionDescription: document.getElementById('description').value.trim(),
+            adoptionImage: document.getElementById('image').value.trim()
+        };
+ 
+        fetch('/api/newAdoption', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newAdoption),
+        })
+            .then((response) => response.json())
+ 
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
+</script>

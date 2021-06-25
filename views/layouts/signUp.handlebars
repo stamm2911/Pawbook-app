@@ -32,3 +32,28 @@
             </form>
         </section>
 </main>
+
+<script type="text/javascript">
+    const submitButton = document.querySelector(".submit");
+    submitButton.addEventListener('click', (e) => {
+        let newUser = {
+            userName: document.getElementById('name').value.trim(),
+            userEmail: document.getElementById('email').value.trim(),
+            userPassword: document.getElementById('password').value.trim(),
+            userConfirmPassword: document.getElementById('confirm-password').value.trim()
+        };
+ 
+        fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        })
+            .then((response) => response.json())
+ 
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
+</script>
