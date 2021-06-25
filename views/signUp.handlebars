@@ -43,6 +43,7 @@
             userConfirmPassword: document.getElementById('confirm-password').value.trim()
         };
  
+        console.log(newUser);
         fetch('/api/signup', {
             method: 'POST',
             headers: {
@@ -51,7 +52,7 @@
             body: JSON.stringify(newUser),
         })
             .then((response) => response.json())
- 
+
         .catch((error) => {
         console.error('Error:', error);
       });

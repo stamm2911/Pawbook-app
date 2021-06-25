@@ -3,27 +3,27 @@ const { Adoption, Users } = require('../../models');
 
 // GET all adoptions
 router.get('/', async (req, res) => {
-  try {
-    const dbAdoptionData = await Adoption.findAll({
-      order: [['updatedAt', 'DESC']],
-      where: {
-        adopted: false,
-      },
-      attributes: {
-        exclude: ['user_id', 'createdAt']
-      },  
-      include: [
-        {
-          model: Users,
-          attributes: ['name'],
-        },
-      ],
-    });
-    res.status(200).json(dbAdoptionData);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+  // try {
+  //   const dbAdoptionData = await Adoption.findAll({
+  //     order: [['updatedAt', 'DESC']],
+  //     where: {
+  //       adopted: false,
+  //     },
+  //     attributes: {
+  //       exclude: ['user_id', 'createdAt']
+  //     },  
+  //     include: [
+  //       {
+  //         model: Users,
+  //         attributes: ['name'],
+  //       },
+  //     ],
+  //   });
+  //   res.status(200).json(dbAdoptionData);
+  // } catch (err) {
+  //   console.log(err);
+  //   res.status(500).json(err);
+  // }
 });
 
 // POST an adoption
