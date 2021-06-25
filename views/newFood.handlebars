@@ -1,0 +1,52 @@
+  <section class="mt-10">
+    <form class="flex flex-col" method="POST" action="#">
+      <div class="mb-6 pt-3 rounded bg-gray-200">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="name">Brand</label>
+            <input type="text" id="brand" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+        </div>
+        <div class="mb-6 pt-3 rounded bg-gray-200">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Quantity</label>
+            <input type="text" id="quantity" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+        </div>
+        <div class="mb-6 pt-3 rounded bg-gray-200">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Date</label>
+            <input type="text" id="date" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+        </div>
+         <div class="mb-6 pt-3 rounded bg-gray-200">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Food for</label>
+            <input type="text" id="type" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+        </div>
+         <div class="mb-6 pt-3 rounded bg-gray-200">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Location</label>
+            <input type="text" id="location" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+        </div>
+       
+
+        <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
+    </form>
+  </section>
+
+  <script type="text/javascript">
+    const submitButton = document.querySelector(".submit");
+    submitButton.addEventListener('click', (e) => {
+        let newFood = {
+            foodBrand: document.getElementById('brand').value.trim(),
+            foodQuantity: document.getElementById('quantity').value.trim(),
+            foodDate: document.getElementById('date').value.trim(),
+            foodFor: document.getElementById('food-for').value.trim()
+            foodLocation: document.getElementById('location').value.trim()
+        };
+ 
+        fetch('/api/newFood', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newFood),
+        })
+            .then((response) => response.json())
+ 
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
