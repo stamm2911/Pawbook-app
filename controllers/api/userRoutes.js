@@ -15,23 +15,49 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// ------------------------------------------------------ NEW USER ---------------------------------------------
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-    res.status(200).json(userData);
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone,
+      photo: req.body.photo,
+      location: req.body.location,
+      description: req.body.description,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log(req.session.loggedIn);
+      res.status(200).json(dbUserData);
+    });
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(404).json(err);
   }
 });
 
-// POST user login
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await User.create(req.body);
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+// ------------------------------------------------------ POST LOGIN -----------------------------------------
 router.post('/login', async (req, res) => {
   try {
-
+    console.log('ssssssssss');
     const userData = await User.findOne({ where: { email: req.body.email } });
+    const dbuserData = userData.get({ plain: true });
+    // console.log(dbuserData);
     if (!userData) {
       res
-        .status(400)
+        .status(403)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
@@ -40,33 +66,49 @@ router.post('/login', async (req, res) => {
 
     if (!validPassword) {
       res
-        .status(400)
+        .status(404)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
 
-    res.json({ user: userData, message: 'You are now logged in!' });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      console.log(req.session);
+      console.log('id:'+dbuserData.id)
+      res.status(200).json({ id: dbuserData.id});
+    });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(405).json(err);
+  }
+});
+
+// ------------------------------------------------------ LOGOUT -----------------------------------------
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
 // PUT update a user
-router.put('/:id', async (req, res) => {
-  try {
-    const userData = await User.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
-    });
-    if (!userData[0]) {
-      res.status(404).json({ message: 'No user with this id!' });
-      return;
-    }
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.put('/:id', async (req, res) => {
+//   try {
+//     const userData = await User.update(req.body, {
+//       where: {
+//         id: req.params.id,
+//       },
+//     });
+//     if (!userData[0]) {
+//       res.status(404).json({ message: 'No user with this id!' });
+//       return;
+//     }
+//     res.status(200).json(userData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;

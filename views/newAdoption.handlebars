@@ -1,3 +1,4 @@
+
   <section class="mt-10">
     <form class="flex flex-col" method="POST" action="#">
       <div class="mb-6 pt-3 rounded bg-gray-200">
@@ -44,4 +45,75 @@
         console.error('Error:', error);
       });
     })
+
+<section class='mt-10'>
+  <form class='flex flex-col' action='/api/adoption' method='POST' enctype='multipart/form-data'>
+    <div class='mb-6 pt-3 rounded bg-gray-200'>
+      <label
+        class='block text-gray-700 text-sm font-bold mb-2 ml-3'
+        for='name'
+      >Date</label>
+      <input
+        type='text'
+        id='date'
+        class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
+      />
+    </div>
+    <div class='mb-6 pt-3 rounded bg-gray-200'>
+      <label
+        class='block text-gray-700 text-sm font-bold mb-2 ml-3'
+        for='email'
+      >Location</label>
+      <input
+        type='text'
+        id='location'
+        class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
+      />
+    </div>
+    <div class='mb-6 pt-3 rounded bg-gray-200'>
+      <label
+        class='block text-gray-700 text-sm font-bold mb-2 ml-3'
+        for='password'
+      >Description</label>
+      <input
+        type='text'
+        id='description'
+        class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
+      />
+    </div>
+    {{!-- <div class='mb-6 pt-3 rounded bg-gray-200'>
+      <label
+        class='block text-gray-700 text-sm font-bold mb-2 ml-3'
+        for='password'
+      >Image</label>
+      <input
+        type='image'
+        id='image'
+        class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
+      />
+    </div> --}}
+
+    {{!-- <button
+      class='bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'
+      type='submit'
+    >Submit</button> --}}
+
+    <h3>Upload Profile photo</h3>
+    <input type='file' name='sampleFile' accept='image/*'/>
+    <input type='submit' class='bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200' />
+
+  </form>
+</section>
+
+<script type='text/javascript'>
+  const submitButton = document.querySelector(".submit");
+  submitButton.addEventListener('click', (e) => { let newAdoption = {
+  adoptionDate: document.getElementById('date').value.trim(), adoptionLocation:
+  document.getElementById('location').value.trim(), adoptionDescription:
+  document.getElementById('description').value.trim(), adoptionImage:
+  document.getElementById('image').value.trim() }; fetch('/api/newAdoption', {
+  method: 'POST', headers: { 'Content-Type': 'application/json', }, body:
+  JSON.stringify(newAdoption), }) .then((response) => response.json())
+  .catch((error) => { console.error('Error:', error); }); })
+
 </script>

@@ -36,12 +36,17 @@ Food.init(
       defaultValue: false,
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       defaultValue: false,
+      references:{
+        model: 'users',
+        key: 'id',
+      }
     }
   },
   {
     sequelize,
+    initialAutoIncrement: 3000,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
