@@ -22,24 +22,21 @@
   </section>
 
   <script type="text/javascript">
-    const submitButton = document.querySelector(".submit");
+     const submitButton = document.querySelector(".submit");
     submitButton.addEventListener('click', (e) => {
         let newAnimal = {
-            animalLastSeen: document.getElementById('last-seen').value.trim(),
-            userEmail: document.getElementById('location').value.trim(),
-            userPassword: document.getElementById('description').value.trim(),
-            userConfirmPassword: document.getElementById('image').value.trim()
+            last_seen: document.getElementById('last-seen').value.trim(),
+            date: document.getElementById('date').value.trim(),
+            description: document.getElementById('description').value.trim(),
+            photo: document.getElementById('image').value.trim()
         };
- 
-        fetch('/api/newAnimal', {
+        fetch('/api/lost_animal', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(newAnimal),
         })
-            .then((response) => response.json())
- 
         .catch((error) => {
         console.error('Error:', error);
       });
