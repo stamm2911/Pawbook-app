@@ -25,3 +25,28 @@
         <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
     </form>
   </section>
+
+  <script type="text/javascript">
+    const submitButton = document.querySelector(".submit");
+    submitButton.addEventListener('click', (e) => {
+        let newFood = {
+            foodBrand: document.getElementById('brand').value.trim(),
+            foodQuantity: document.getElementById('quantity').value.trim(),
+            foodDate: document.getElementById('date').value.trim(),
+            foodFor: document.getElementById('food-for').value.trim()
+            foodLocation: document.getElementById('location').value.trim()
+        };
+ 
+        fetch('/api/newFood', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newFood),
+        })
+            .then((response) => response.json())
+ 
+        .catch((error) => {
+        console.error('Error:', error);
+      });
+    })
