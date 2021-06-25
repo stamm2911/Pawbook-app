@@ -46,6 +46,7 @@ Food.init(
   },
   {
     sequelize,
+    initialAutoIncrement: 3000,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
