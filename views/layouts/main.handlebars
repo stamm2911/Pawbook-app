@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,6 +34,16 @@
           </button>
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+
+           <div class="text-sm lg:flex-grow">
+            <a class="nav-item" href="/adoption" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Adoption
+            </a>
+            <a class="nav-item" href="/animals" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+              Lost Animals
+            </a>
+            <a class="nav-item" href="/food" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+
           {{!-- <div class="text-sm lg:flex-grow">
             <a href="/adoption" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
               Adoption
@@ -45,12 +52,18 @@
               Lost Animals
             </a>
             <a href="/food" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
+
               Food
             </a>
           </div>
           <div>
+
+            <a class="nav-item" href="/profile{{id}}" id="nav-img" class="inline-block px-4 py-2 leading-none border rounded-full w-12 h-12 border-white mt-2"></a>
+          </div> 
+
             <a href="/profile{{id}}" id="nav-img" class="inline-block px-4 py-2 leading-none border rounded-full w-12 h-12 border-white mt-2"></a>
           </div> --}}
+
         </div>
       </nav>
     </nav>
@@ -63,3 +76,12 @@
 </body>
 
 </html>
+
+
+<script>
+  const navItem = document.querySelector(".nav-item");
+  {{!--  --}}
+  isLogin ? navItem.show(): navItem.hide();
+</script>
+
+
