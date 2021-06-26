@@ -27,10 +27,13 @@ router.get('/', async (req, res) => {
 //Post type of Food donation
 router.post('/', async (req, res) => {
     try {
-        const foodDonation = await Food.create(req.body);
+        const body = req.body
+        body.user_id = req.session.userId;
+        console.log('bodywwww',body)
+        const foodDonation = await Food.create(body);
         res.status(200).json(foodDonation);
     } catch (err) {
-        res.status(400).json(err);
+        res.status(405).json(err);
     }
 });
 // UPDATE a new donation

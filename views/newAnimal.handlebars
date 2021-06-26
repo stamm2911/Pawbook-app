@@ -1,44 +1,45 @@
+  {{> loginHeader}}
+  <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
   <section class="mt-10">
-    <form class="flex flex-col" method="POST" action="#">
+    <form id="newAnimalForm" class="flex flex-col">
       <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="name">Last Seen</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="lastSeen">Last Seen</label>
             <input type="text" id="lastSeen" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Date</label>
-            <input type="text" id="location" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="date">Date</label>
+            <input type="text" id="date" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Description</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="description">Description</label>
             <input type="text" id="description" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
-        <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Image</label>
-            <input type="image" id="image" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
-        </div>
-
-        <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
+        <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Next</button>
     </form>
   </section>
-
-  <script type="text/javascript">
-     const submitButton = document.querySelector(".submit");
-    submitButton.addEventListener('click', (e) => {
+</main>
+  <script type='text/javascript'>
+  const submitButton = document.getElementById('newAnimalForm');
+    submitButton.addEventListener('submit', async (e) => {
+        e.preventDefault();
         let newAnimal = {
-            last_seen: document.getElementById('last-seen').value.trim(),
+            last_seen: document.getElementById('lastSeen').value.trim(),
             date: document.getElementById('date').value.trim(),
             description: document.getElementById('description').value.trim(),
-            photo: document.getElementById('image').value.trim()
         };
-        fetch('/api/lost_animal', {
+        console.log(JSON.stringify(newAnimal))
+        const response = await fetch('/api/lost_animal/', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify(newAnimal),
-        })
-        .catch((error) => {
-        console.error('Error:', error);
-      });
+            headers: { 'Content-Type': 'application/json' },
+        });
+ 
+        console.log('response')
+        if (response.ok) {
+        console.log('in')
+        document.location.replace('/newanimalphoto');
+        } else {
+        alert('Failed to sign up!');
+        }
     })
 </script>

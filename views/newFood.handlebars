@@ -1,23 +1,25 @@
+{{> loginHeader}}
+<main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
   <section class="mt-10">
-    <form class="flex flex-col" method="POST" action="#">
+    <form id="newFoodForm" class="flex flex-col">
       <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="name">Brand</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="Brand">Brand</label>
             <input type="text" id="brand" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="email">Quantity</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="quantity">Quantity</label>
             <input type="text" id="quantity" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
         <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Date</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="date">Date</label>
             <input type="text" id="date" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
          <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Food for</label>
-            <input type="text" id="type" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="food">Food for</label>
+            <input type="text" id="food" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
          <div class="mb-6 pt-3 rounded bg-gray-200">
-            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="password">Location</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="location">Location</label>
             <input type="text" id="location" class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3">
         </div>
        
@@ -25,28 +27,32 @@
         <button class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Submit</button>
     </form>
   </section>
-
+</main>
   <script type="text/javascript">
-   const submitButton = document.querySelector(".submit");
-    submitButton.addEventListener('click', (e) => {
+   const submitButton = document.getElementById('newFoodForm');
+    submitButton.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        console.log('antes')
         let newFood = {
             brand: document.getElementById('brand').value.trim(),
             qty: document.getElementById('quantity').value.trim(),
             date: document.getElementById('date').value.trim(),
-            type: document.getElementById('type').value.trim()
+            type: document.getElementById('food').value.trim(),
             location: document.getElementById('location').value.trim()
         };
-        fetch('/api/food', {
+        console.log(JSON.stringify(newFood))
+        const response = await fetch('/api/food/', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
             body: JSON.stringify(newFood),
-        })
-            .then((newFood) => newFood.json())
-            console.log(newFood)
-        .catch((error) => {
-        console.error('Error:', error);
-      });
+            headers: { 'Content-Type': 'application/json' },
+        });
+ 
+        console.log('response')
+        if (response.ok) {
+        console.log('in')
+        document.location.replace('/');
+        } else {
+        alert('Failed create food!!!!');
+        }
     })
     </script>

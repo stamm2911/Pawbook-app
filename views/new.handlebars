@@ -1,10 +1,23 @@
+{{> loginHeader}}
+<main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
 <section>
         <h3 class="font-bold text-2xl flex justify-center mb-8">Select a type of post...</h3>
-        <button class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl">Food</button>
-        <button class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl">Lost Animal</button>
-        <button class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl">Adopt</button>
+        <a href="/newfood" class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl" id="button1">Food</a>
+        <a href="/newanimal" class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl"id ="button2">Lost Animal</a>
+        <a href="/newadoption" class="block m-4 p-2 bg-blue-900 hover:bg-blue-800 rounded-lg w-40 shadow-md text-white hover:shadow-xl" id = "button3">Adopt</a>
 </section>
-
-{{!-- <section class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
-    {{ body }}
-</section> --}}
+</main>
+<script type="text/javascript">
+    const foodButton = document.getElementById("button1");
+    foodButton.addEventListener('click', (e) => {
+        window.location.href = "/../../newfood"
+    })
+    const animalButton = document.getElementById("button2");
+    animalButton.addEventListener('click', (e) => {
+        window.location.href = "/../../newanimal"
+    })
+    const adoptionButton = document.getElementById("button3");
+    adoptionButton.addEventListener('click', (e) => {
+        window.location.href = "/../../newadoption"
+    })
+    <script type="text/javascript">

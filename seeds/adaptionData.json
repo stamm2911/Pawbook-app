@@ -1,32 +1,32 @@
 [
   {
     "location": "Colonia Roma",
-    "description": "Perro dalmata cachorro",
+    "description": "Gato bengala adulto",
     "user_id": "2",
-    "photo": "picture"
+    "photo": "cat1.jpg"
   },
   {
     "location": "Colonia Juarez",
-    "description": "Gato bengala adulto",
+    "description": "Perro labrador",
     "user_id": "1",
-    "photo": "picture"
+    "photo": "dog1.jpg"
   },
   {
     "location": "Colonia Polanco",
     "description": "Perro cruza tamaño mediano, tranquilo",
     "user_id": "3",
-    "photo": "picture"
+    "photo": "dog2.jpg"
   },
   {
     "location": "Colonia Tlatelolco",
-    "description": "Perro raza salchica, muy jugueton",
+    "description": "Perro bebé, muy jugueton",
     "user_id": "1",
-    "photo": "picture"
+    "photo": "dog3.jpg"
   },
   {
     "location": "Tepito",
-    "description": "Perro bebé",
+    "description": "Gato raro",
     "user_id": "1",
-    "photo": "picture"
+    "photo": "cat2.jpg"
   } 
 ]
