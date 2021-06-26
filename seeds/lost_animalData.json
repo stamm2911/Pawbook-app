@@ -4,34 +4,34 @@
     "description": "Perro café cachorro",
     "last_seen": "Naucalpan",
     "user_id": 2,
-    "photo": "picture"
+    "photo": "strayDog2.jpg"
   },
   {
     "date": "2021-11-13 14:22:00",
     "description": "Perro gris adulto",
     "last_seen": "Atizapan",
     "user_id": 3,
-    "photo": "picture"
+    "photo": "strayDog1.jpg"
   },
   {
     "date": "2021-06-15 20:35:00",
-    "description": "Gato rayado blanco con negro bebé",
+    "description": "Perro mediano",
     "last_seen": "Toluca",
     "user_id": 2,
-    "photo": "picture"
+    "photo": "strayDog4.jpg"
   },
   {
     "date": "2021-11-30 19:41:00",
     "description": "Perro grande sin collar blanco",
     "last_seen": "Ecatepec",
     "user_id": 1,
-    "photo": "picture"
+    "photo": "strayDog3.jpg"
   },
   {
     "date": "2021-12-19 22:00:00",
-    "description": "Perro azul",
+    "description": "Pato negro perdido",
     "last_seen": "Atlacomulco",
     "user_id": 3,
-    "photo": "picture"
+    "photo": "strayDuck1.jpg"
   }
 ]

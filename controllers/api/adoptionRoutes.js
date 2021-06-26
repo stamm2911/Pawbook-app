@@ -34,9 +34,12 @@ router.get('/', async (req, res) => {
   }
 });
 
-// POST an adoption
-router.post('/', (req, res) => {
+// POST an adoption PHOTOOOOO
+router.post('/photo', async (req, res) => {
   try {
+    console.log('**********************');
+    // console.log(req)
+    console.log(req.files);
     let sampleFile;
     let uploadPath;
 
@@ -52,20 +55,54 @@ router.post('/', (req, res) => {
     console.log(uniqPhotoId);
     console.log(sampleFile);
     console.log(uploadPath);
+    console.log(req.session.userId);
 
+    const AdoptionPhoto = {
+      photo: uniqPhotoId,
+    }
+
+    const dbadoptionRecords = await Adoption.findAll({
+      order: [['id', 'DESC']]
+    });
+    const adoptionRecords = dbadoptionRecords.map((adoption) =>
+      adoption.get({ plain: true })
+    );
+
+    console.log(adoptionRecords[0]);
+  
     // Use mv() to place file on the server
-    sampleFile.mv(uploadPath, (err) => {
+    sampleFile.mv(uploadPath, async (err) => {
       if (err) return res.status(500).send(err);
       console.log('after');
+
+      await Adoption.update(AdoptionPhoto, {
+        where: {
+          id: adoptionRecords[0].id,
+        },
+      });
       
-      
-      // Store the data in a variable once the promise is resolved
-      // const newAdoption = await Adoption.create(req.body);
-      // res.status(200).json(newAdoption);
+      res.status(203).redirect('/');
     });
-    res.status(203);  
   } catch (err) {
     res.status(500).send(err);
+  }
+});
+
+// ************************************************
+// POST an adoption INFOOOOOO
+router.post('/', async (req, res) => {
+  try {
+    console.log('-------------------------------------------------');
+    console.log(req.body);
+    const body = req.body;
+    body.user_id = req.session.userId;
+    body.photo = 'photo';
+    console.log('bodywwww', body);
+    const postAdoption = await Adoption.create(body);
+    res.status(200).json(postAdoption);
+  } catch (err) {
+    console.log(err);
+    res.status(507).send(err);
   }
 });
 

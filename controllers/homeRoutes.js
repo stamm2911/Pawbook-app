@@ -205,6 +205,16 @@ router.get('/newfood', async (req, res) => {
   }
 });
 
+// ------------------------------------------------------ NEW ANIMAL PHOTO -------------------------------------------
+router.get('/newanimalphoto', async (req, res) => {
+  console.log(req.session);
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
+    res.render('newAnimalPhoto');
+  }
+});
+
 // ------------------------------------------------------ NEW ADOPTION -------------------------------------------
 router.get('/newadoption', async (req, res) => {
   console.log(req.session);
@@ -212,6 +222,16 @@ router.get('/newadoption', async (req, res) => {
     res.redirect('/login');
   } else {
     res.render('newAdoption');
+  }
+});
+
+// ------------------------------------------------------ NEW ADOPTION PHOTO -------------------------------------------
+router.get('/newadoptionphoto', async (req, res) => {
+  console.log(req.session);
+  if (!req.session.loggedIn) {
+    res.redirect('/login');
+  } else {
+    res.render('newAdoptionPhoto');
   }
 });
 
@@ -226,17 +246,16 @@ router.get('/newanimal', async (req, res) => {
 });
 
 // ------------------------------------------------------ PROFILE --------------------------------------------
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/', async (req, res) => {
   try {
-    const dbUserData = await Users.findByPk(req.params.id);
+    const dbUserData = await Users.findByPk(req.session.userId);
     const UserData = dbUserData.get({ plain: true });
     console.log(UserData);
     if (!UserData) {
       res.status(404).json({ message: 'No user with this id!' });
       return;
     }
-    // res.status(200).json(userData);
-    res.render('profile', { UserData });
+    res.render('profile', { UserData, userId: req.session.userId });
   } catch(err){
     res.status(400).json(err);
   }

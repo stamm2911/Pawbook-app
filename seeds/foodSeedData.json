@@ -4,8 +4,8 @@
     "qty": "1",
     "date": "06/19/21",
     "type": "Dog",
-    "location": "Chapultepec",
-    "taken": true,
+    "location": "Cancun",
+    "taken": false,
     "user_id": "1"
   },
   {
@@ -13,7 +13,7 @@
     "qty": "2",
     "date": "06/20/21",
     "type": "Cat",
-    "location": "Zócalo",
+    "location": "Tijuana",
     "taken": false,
     "user_id": "2"
   },
@@ -22,8 +22,8 @@
     "qty": "3",
     "date": "06/19/21",
     "type": "Dog",
-    "location": "Tepito",
-    "taken": true,
+    "location": "Texas",
+    "taken": false,
     "user_id": "3"
   }
 ]

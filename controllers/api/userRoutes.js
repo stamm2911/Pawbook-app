@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const User = require('../../models/Users');
 
-// GET one user
+// ------------------------------------------------------ GET USER ---------------------------------------------
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id);
@@ -28,8 +28,12 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
+    const userData2 = await User.findOne({ where: { email: req.body.email } });
+    const dbuserData2 = userData2.get({ plain: true });
+
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = dbuserData2.id;
       console.log(req.session.loggedIn);
       res.status(200).json(dbUserData);
     });
@@ -52,9 +56,10 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     console.log('ssssssssss');
+    console.log(req.body)
     const userData = await User.findOne({ where: { email: req.body.email } });
     const dbuserData = userData.get({ plain: true });
-    // console.log(dbuserData);
+    console.log('data:',dbuserData);
     if (!userData) {
       res
         .status(403)
@@ -73,9 +78,10 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.userId = dbuserData.id;
       console.log(req.session);
       console.log('id:'+dbuserData.id)
-      res.status(200).json({ id: dbuserData.id});
+      res.status(220).send('lol');
     });
   } catch (err) {
     res.status(405).json(err);

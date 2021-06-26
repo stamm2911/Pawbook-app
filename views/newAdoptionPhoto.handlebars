@@ -1,11 +1,20 @@
 {{> loginHeader}}
 <main class="bg-white max-w-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
 <section class='mt-10'>
+  <h1 class="font-bold text-2xl">Upload a Photo!</h1>
   <form id="newAdoptionForm" class='flex flex-col' action='/api/adoption/photo' method='POST' enctype='multipart/form-data'>
   {{!-- <form id="newAdoptionForm" class='flex flex-col' enctype='multipart/form-data'> --}}
     {{!-- <div class='mb-6 pt-3 rounded bg-gray-200'>
-      
-    </div> --}}
+      <label
+        class='block text-gray-700 text-sm font-bold mb-2 ml-3'
+        for='date'
+      >Date</label>
+      <input
+        type='text'
+        id='date'
+        class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
+      />
+    </div>
     <div class='mb-6 pt-3 rounded bg-gray-200'>
       <label
         class='block text-gray-700 text-sm font-bold mb-2 ml-3'
@@ -27,7 +36,7 @@
         id='description'
         class='bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 pb-3'
       />
-    </div>
+    </div> --}}
     {{!-- <div class='mb-6 pt-3 rounded bg-gray-200'>
       <label
         class='block text-gray-700 text-sm font-bold mb-2 ml-3'
@@ -42,39 +51,13 @@
 
 
     {{!-- <h3>Upload Profile photo</h3> --}}
-    {{!-- <input id="photo" type='file' name='sampleFile' accept='image/*'/> --}}
+    <input id="photo" type='file' name='sampleFile' accept='image/*'/>
     <button
       class='bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200'
       type='submit'
-    >Next</button>
+    >Submit</button>
     {{!-- <input type='submit' class='bg-blue-900 hover:bg-blue-800 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200' /> --}}
 
   </form>
 </section>
 </main>
-
-
-<script type='text/javascript'>
-  const submitButton = document.getElementById('newAdoptionForm');
-    submitButton.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        let newAdoption = {
-            location: document.getElementById('location').value.trim(),
-            description: document.getElementById('description').value.trim(),
-        };
-        console.log(JSON.stringify(newAdoption))
-        const response = await fetch('/api/adoption/', {
-            method: 'POST',
-            body: JSON.stringify(newAdoption),
-            headers: { 'Content-Type': 'application/json' },
-        });
- 
-        console.log('response')
-        if (response.ok) {
-        console.log('in')
-        document.location.replace('/newadoptionphoto');
-        } else {
-        alert('Failed to sign up!');
-        }
-    })
-</script>
