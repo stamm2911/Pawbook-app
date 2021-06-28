@@ -1,66 +1,68 @@
-# Project 2
+# Pawbook
 
-## Overview
 
-Welcome to Project 2! This is yet another important milestone in your full-stack journey: designing and building your first full-stack web application. You and your team will design and build an app using the MVC paradigm, create your own server-side API, add user authentication, and connect to a database.
 
-## Key Topics
+## Description
 
-The following topics will be covered in this unit:
+Regardless of laws against animal abuse in México, Mexico ranks first in animals that have been abandoned to live in the streets, condemned to despair, suffering and hunger. Most of these animals came to the streets due to carelessness and negligence. Many unsterilized pups are abandoned. If they survive, in many cases they reproduce, giving birth to another generation of puppies relegated to living abroad. With this in mind, we decided to create Pawbook, to help this animals find a home.
 
-* Full-stack applications
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Features](#features)
 
-* [Git branching workflow](https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows)
+## Installation
 
-* [Agile software development](https://en.wikipedia.org/wiki/Agile_software_development)
+This project has been deployed to GitHub.
+https://github.com/stamm2911/Project_2
 
-* Collaborative development
+ To get this project up and running, you can follow the deployment link.
+https://stormy-savannah-69028.herokuapp.com/login
 
-## Learning Objectives
+ 
+## Usage
 
-You will be employer-ready if you are able to:
+- Create your new Pawbook account or Log in if you already have one
 
-* Speak technically about a feature you implemented in your project
+<img src="./images/signUp.png">
 
-* Explain and execute git branching workflow in a collaborative project
+- The adoption page will be the first one to be prompt 
 
-* Resolve merge conflicts
 
-* Explain agile software development
+<img src="./images/adoption.png">
 
-* Design, build and deploy a full-stack web application to Heroku
+- Thenthe navbar you can choose if you want to see the post of Lost Animals and Food
 
-* Prepare a professional presentation and repository README for your project
+<img src="./images/lostAnimals.png">
 
-## Homework
+<img src="./images/food.png">
 
-With your team, you’ll conceive and execute a design that solves a real-world problem. In creating your first collaborative full-stack application, you’ll combine a robust back end--with servers, databases, advanced APIs, and user authentication—-to an intuitive front end. You’ll continue to build on the agile development methodologies you’ve used throughout this course, like storing your project code in GitHub, managing your work with a project management tool, and implementing feature and bug fixes using the Git branch workflow and pull requests.
+- The last option in the nav bar will send you to your profile where you can make a new post
 
-Instead of using the front end you developed for your first project, you should start from scratch. Doing so will help you reinforce your existing front-end abilities and solidify your understanding of the dynamic between the front end and back end. Also, you’ve likely improved your skills since that first project, so with a stronger foundation now you can build a better application, using all of the additional practice you’ve had in the last several weeks.
+<img src="./images/profile.png">
 
-## Career Connection
+- Video usage:
 
-For more information about Career Services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [Career Services website](https://mycareerspot.org/).
+<img src="./images/usage.gif">
 
-## Heads-Up
+## Credits
+- Eduardo Stamm
+- Alejandro de la Lama
+- Eduardo Martínez
+- Regina Soto
+## License
 
-In the next unit, you'll continue to work on your group projects. You'll end the week by presenting your project to your class. Once your project is complete, you'll want to update your professional materials and add your new project to your portfolio.
+Pawbook
 
-## Resources
-
-Here are some additional resources to help solidify the topics covered in this unit.
-
-### Full-Stack Blog Posts
-
-Check out the [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/) for additional resources, like walkthroughs, articles, and installation guides.
-
-  * 📖 [Deploy with Heroku and MySQL](https://coding-boot-camp.github.io/full-stack/heroku/deploy-with-heroku-and-mysql)
-
-### General
-
-Refer to these resources for additional information about topics covered in this unit.
-
-  * 📖 [Learn Enough Git to Be Dangerous](https://www.learnenough.com/git-tutorial/getting_started)
-
----
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+## Features
+- HTML
+- CSS
+- JS
+- NODEJS
+- EXPRESS
+- MYSQL
+- ORM 
+- MVC
+- Tailwind
